@@ -1,0 +1,58 @@
+{
+  "name": "Firecrawl MCP Configuration",
+  "description": "Configuration files for integrating Firecrawl MCP server with various AI clients",
+  
+  "cursor": {
+    "mcpServers": {
+      "firecrawl-mcp": {
+        "command": "npx",
+        "args": ["-y", "firecrawl-mcp"],
+        "env": {
+          "FIRECRAWL_API_KEY": "YOUR-API-KEY"
+        }
+      }
+    }
+  },
+
+  "claude_desktop": {
+    "mcpServers": {
+      "firecrawl": {
+        "url": "https://mcp.firecrawl.dev/{YOUR_API_KEY}/sse"
+      }
+    }
+  },
+
+  "windsurf": {
+    "mcpServers": {
+      "mcp-server-firecrawl": {
+        "command": "npx",
+        "args": ["-y", "firecrawl-mcp"],
+        "env": {
+          "FIRECRAWL_API_KEY": "YOUR_API_KEY"
+        }
+      }
+    }
+  },
+
+  "vscode": {
+    "mcp": {
+      "inputs": [
+        {
+          "type": "promptString",
+          "id": "apiKey",
+          "description": "Firecrawl API Key",
+          "password": true
+        }
+      ],
+      "servers": {
+        "firecrawl": {
+          "command": "npx",
+          "args": ["-y", "firecrawl-mcp"],
+          "env": {
+            "FIRECRAWL_API_KEY": "${input:apiKey}"
+          }
+        }
+      }
+    }
+  }
+} 

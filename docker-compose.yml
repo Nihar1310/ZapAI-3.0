@@ -1,0 +1,100 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: zapai_postgres
+    environment:
+      POSTGRES_DB: zapai_db
+      POSTGRES_USER: zapai_user
+      POSTGRES_PASSWORD: zapai_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U zapai_user -d zapai_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: zapai_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  # Playwright MCP Server for Web Scraping
+  mcp-playwright:
+    image: node:18-alpine
+    container_name: zapai_mcp_playwright
+    working_dir: /app
+    command: npx -y @hisma/server-puppeteer
+    ports:
+      - "3002:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+
+  # Main ZapAI API
+  zapai-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: zapai_api
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://zapai_user:zapai_password@postgres:5432/zapai_db
+      - REDIS_URL=redis://redis:6379/0
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - GOOGLE_CSE_ID=${GOOGLE_CSE_ID}
+      - BING_API_KEY=${BING_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - SECRET_KEY=${SECRET_KEY}
+      - DEBUG=${DEBUG}
+      - ENVIRONMENT=${ENVIRONMENT}
+    volumes:
+      - ./logs:/app/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      mcp-playwright:
+        condition: service_started
+    restart: unless-stopped
+
+  # Ngrok for HTTPS tunnel (optional)
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: zapai_ngrok
+    command: http zapai-api:8000
+    environment:
+      - NGROK_AUTHTOKEN=${NGROK_AUTH_TOKEN}
+    ports:
+      - "4040:4040"  # Ngrok web interface
+    depends_on:
+      - zapai-api
+    profiles:
+      - ngrok
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  default:
+    name: zapai_network

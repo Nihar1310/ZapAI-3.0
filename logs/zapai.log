@@ -1,0 +1,53 @@
+2025-07-03 01:56:23.596 | INFO     | app.main:lifespan:31 - 🚀 Starting ZapAI application...
+2025-07-03 01:56:23.596 | INFO     | app.database:init_db:66 - Initializing database...
+2025-07-03 01:56:23.596 | INFO     | app.database:init_db:68 - ✅ Database initialized (demo mode)
+2025-07-03 01:56:23.596 | INFO     | app.main:lifespan:36 - ✅ Database initialized
+2025-07-03 01:56:23.607 | ERROR    | app.services.mcp_manager:_health_check_server:54 - ❌ bing_search MCP server health check failed: Cannot connect to host localhost:3005 ssl:default [Connect call failed ('127.0.0.1', 3005)]
+2025-07-03 01:56:23.666 | ERROR    | app.services.mcp_manager:_health_check_server:54 - ❌ google_search MCP server health check failed: Cannot connect to host mcp-google:3000 ssl:default [nodename nor servname provided, or not known]
+2025-07-03 01:56:23.675 | ERROR    | app.services.mcp_manager:_health_check_server:54 - ❌ contact_extractor MCP server health check failed: Cannot connect to host mcp-contact-extractor:3000 ssl:default [nodename nor servname provided, or not known]
+2025-07-03 01:56:23.678 | ERROR    | app.services.mcp_manager:_health_check_server:54 - ❌ duckduckgo_search MCP server health check failed: Cannot connect to host mcp-duckduckgo:3000 ssl:default [nodename nor servname provided, or not known]
+2025-07-03 01:56:23.678 | ERROR    | app.services.mcp_manager:_health_check_server:54 - ❌ playwright_scraper MCP server health check failed: Cannot connect to host mcp-playwright:3000 ssl:default [nodename nor servname provided, or not known]
+2025-07-03 01:56:23.678 | INFO     | app.services.mcp_manager:initialize:26 - MCP Manager initialized
+2025-07-03 01:56:23.679 | ERROR    | app.services.cache_service:initialize:36 - ❌ Failed to connect to Redis: Error Multiple exceptions: [Errno 61] Connect call failed ('::1', 6379, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 6379) connecting to localhost:6379.
+2025-07-03 01:56:23.680 | ERROR    | app.services.rate_limiter:initialize:55 - ❌ Failed to connect to Redis for rate limiting: Error Multiple exceptions: [Errno 61] Connect call failed ('::1', 6379, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 6379) connecting to localhost:6379.
+2025-07-03 01:56:23.680 | INFO     | app.main:lifespan:43 - ✅ All services initialized successfully
+2025-07-03 02:02:21.674 | INFO     | app.main:lifespan:53 - 🛑 Shutting down ZapAI application...
+2025-07-03 02:02:21.676 | INFO     | app.services.mcp_manager:cleanup:32 - MCP Manager cleaned up
+2025-07-03 02:02:21.676 | INFO     | app.main:lifespan:60 - ✅ Application shutdown complete
+2025-07-03 02:02:22.648 | INFO     | app.main:lifespan:31 - 🚀 Starting ZapAI application...
+2025-07-03 02:02:22.648 | INFO     | app.database:init_db:66 - Initializing database...
+2025-07-03 02:02:22.648 | INFO     | app.database:init_db:68 - ✅ Database initialized (demo mode)
+2025-07-03 02:02:22.648 | INFO     | app.main:lifespan:36 - ✅ Database initialized
+2025-07-03 02:02:22.656 | ERROR    | app.services.mcp_manager:_health_check_server:54 - ❌ bing_search MCP server health check failed: Cannot connect to host localhost:3005 ssl:default [Connect call failed ('127.0.0.1', 3005)]
+2025-07-03 02:02:22.676 | ERROR    | app.services.mcp_manager:_health_check_server:54 - ❌ google_search MCP server health check failed: Cannot connect to host mcp-google:3000 ssl:default [nodename nor servname provided, or not known]
+2025-07-03 02:02:22.677 | ERROR    | app.services.mcp_manager:_health_check_server:54 - ❌ playwright_scraper MCP server health check failed: Cannot connect to host mcp-playwright:3000 ssl:default [nodename nor servname provided, or not known]
+2025-07-03 02:02:22.677 | ERROR    | app.services.mcp_manager:_health_check_server:54 - ❌ duckduckgo_search MCP server health check failed: Cannot connect to host mcp-duckduckgo:3000 ssl:default [nodename nor servname provided, or not known]
+2025-07-03 02:02:22.677 | ERROR    | app.services.mcp_manager:_health_check_server:54 - ❌ contact_extractor MCP server health check failed: Cannot connect to host mcp-contact-extractor:3000 ssl:default [nodename nor servname provided, or not known]
+2025-07-03 02:02:22.677 | INFO     | app.services.mcp_manager:initialize:26 - MCP Manager initialized
+2025-07-03 02:02:22.679 | ERROR    | app.services.cache_service:initialize:36 - ❌ Failed to connect to Redis: Error Multiple exceptions: [Errno 61] Connect call failed ('::1', 6379, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 6379) connecting to localhost:6379.
+2025-07-03 02:02:22.679 | ERROR    | app.services.rate_limiter:initialize:55 - ❌ Failed to connect to Redis for rate limiting: Error Multiple exceptions: [Errno 61] Connect call failed ('::1', 6379, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 6379) connecting to localhost:6379.
+2025-07-03 02:02:22.679 | INFO     | app.main:lifespan:43 - ✅ All services initialized successfully
+2025-07-03 02:30:48.909 | INFO     | app.main:lifespan:53 - 🛑 Shutting down ZapAI application...
+2025-07-03 02:30:48.913 | INFO     | app.services.mcp_manager:cleanup:32 - MCP Manager cleaned up
+2025-07-03 02:30:48.913 | INFO     | app.main:lifespan:60 - ✅ Application shutdown complete
+2025-07-03 02:30:49.794 | INFO     | app.main:lifespan:31 - 🚀 Starting ZapAI application...
+2025-07-03 02:30:49.795 | INFO     | app.database:init_db:66 - Initializing database...
+2025-07-03 02:30:49.795 | INFO     | app.database:init_db:68 - ✅ Database initialized (demo mode)
+2025-07-03 02:30:49.795 | INFO     | app.main:lifespan:36 - ✅ Database initialized
+2025-07-03 02:30:49.795 | ERROR    | app.services.mcp_manager:_health_check_server:54 - ❌ brave_search MCP server health check failed: npx%20@modelcontextprotocol/server-brave-search/health
+2025-07-03 02:30:49.795 | ERROR    | app.services.mcp_manager:_health_check_server:54 - ❌ google_maps MCP server health check failed: npx%20@modelcontextprotocol/server-google-maps/health
+2025-07-03 02:30:49.795 | ERROR    | app.services.mcp_manager:_health_check_server:54 - ❌ puppeteer_scraper MCP server health check failed: npx%20@modelcontextprotocol/server-puppeteer/health
+2025-07-03 02:30:49.795 | ERROR    | app.services.mcp_manager:_health_check_server:54 - ❌ everything_test MCP server health check failed: npx%20@modelcontextprotocol/server-everything/health
+2025-07-03 02:30:49.795 | INFO     | app.services.mcp_manager:initialize:26 - MCP Manager initialized
+2025-07-03 02:30:49.799 | ERROR    | app.services.cache_service:initialize:36 - ❌ Failed to connect to Redis: Error Multiple exceptions: [Errno 61] Connect call failed ('::1', 6379, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 6379) connecting to localhost:6379.
+2025-07-03 02:30:49.800 | ERROR    | app.services.rate_limiter:initialize:55 - ❌ Failed to connect to Redis for rate limiting: Error Multiple exceptions: [Errno 61] Connect call failed ('::1', 6379, 0, 0), [Errno 61] Connect call failed ('127.0.0.1', 6379) connecting to localhost:6379.
+2025-07-03 02:30:49.800 | INFO     | app.main:lifespan:43 - ✅ All services initialized successfully
+2025-07-03 02:31:41.817 | INFO     | app.main:lifespan:53 - 🛑 Shutting down ZapAI application...
+2025-07-03 02:31:41.818 | INFO     | app.services.mcp_manager:cleanup:32 - MCP Manager cleaned up
+2025-07-03 02:31:41.818 | INFO     | app.main:lifespan:60 - ✅ Application shutdown complete
+2025-07-03 02:31:42.477 | INFO     | app.main:lifespan:31 - 🚀 Starting ZapAI application...
+2025-07-03 02:31:42.477 | INFO     | app.database:init_db:66 - Initializing database...
+2025-07-03 02:31:42.477 | INFO     | app.database:init_db:68 - ✅ Database initialized (demo mode)
+2025-07-03 02:31:42.477 | INFO     | app.main:lifespan:36 - ✅ Database initialized
+2025-07-03 02:31:43.314 | INFO     | app.services.mcp_manager:_check_server:61 - ✅ brave_search MCP server is available
+2025-07-03 02:31:43.921 | INFO     | app.services.mcp_manager:_check_server:61 - ✅ google_maps MCP server is available

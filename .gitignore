@@ -1,0 +1,18 @@
+node_modules
+.vscode
+cursor
+```
+ • Save the file
+**4. Stage and commit local changes** ‘Source Control’ panel
+ • Click the ‘+’ icon and select ‘Stage All Changes’
+ • At the top of the source control panel provide a commit message like “Initial Commit” and click ‘Commit’
+**5. Publish to GitHub**
+ • Click the ‘Publish Branch’ option
+ • A popup appears with different options
+ • Select the GitHub account you want to use
+ • Enter the name of your repository
+ • Select ‘Public’ or ‘Private’
+ • Click ‘Publish to GitHub’
+**Troubleshooting**
+ • If you have any errors check the ‘Problems’ panel in VSCode
+ • The most common error is you are not logged into GitHub so revisit step 1

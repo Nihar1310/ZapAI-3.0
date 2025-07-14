@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZapAI - The Future of Search is Here</title>
+  
+  <!-- Meta tags -->
+  <meta name="description" content="Transform your business with ZapAI's cutting-edge AI platform. From natural language processing to computer vision, unlock the power of artificial intelligence.">
+  <meta name="keywords" content="AI, Artificial Intelligence, Machine Learning, NLP, Computer Vision, ZapAI">
+  <meta name="author" content="ZapAI">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="ZapAI - The Future of Search is Here">
+  <meta property="og:description" content="Transform your business with cutting-edge AI platform">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/zapai-preview.png">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    /* Custom Styles */
+    body, html {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #111111;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Manrope', sans-serif !important;
+      letter-spacing: -0.03em !important;
+    }
+
+    .title-bold {
+      font-weight: 600 !important;
+    }
+
+    .title-light {
+      font-weight: 200 !important;
+    }
+
+    /* WebGL Canvas */
+    #shader-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: block;
+      z-index: 0;
+      background: #111111;
+    }
+
+    /* Glassmorphism */
+    .glass-effect {
+      backdrop-filter: blur(14px) brightness(0.91);
+    }
+
+    /* Gradient Text */
+    .gradient-text {
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    /* Floating Animation */
+    .floating-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(2deg);
+      }
+    }
+
+    /* Pulse Glow */
+    .pulse-glow {
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+      }
+    }
+
+    /* Feature Icons */
+    .feature-icon {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Logo */
+    .logo-image {
+      width: 2rem;
+      height: 2rem;
+      object-fit: contain;
+      filter: brightness(1.1) contrast(1.1);
+      display: block;
+    }
+
+    .logo-image:hover {
+      filter: brightness(1.3) contrast(1.2);
+      transition: filter 0.3s ease;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(59, 130, 246, 0.5);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(59, 130, 246, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <!-- WebGL Shader Canvas -->
+  <canvas id="shader-canvas"></canvas>
+  
+  <!-- Navigation -->
+  <nav class="relative z-20 glass-effect bg-white/5 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <svg class="logo-image mr-3" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 0L8.5 8H0L11 24V14H19L13 0Z" fill="#ffffff"/>
+          </svg>
+          <span class="text-white font-semibold text-lg">ZapAI</span>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#features" class="text-white/70 hover:text-white text-sm transition-colors">Features</a>
+          <a href="#pricing" class="text-white/70 hover:text-white text-sm transition-colors">Pricing</a>
+          <a href="#docs" class="text-white/70 hover:text-white text-sm transition-colors">Docs</a>
+          <button class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm rounded-lg transition-colors">
+            Get Started
+          </button>
+        </div>
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button class="text-white/70 hover:text-white">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="relative z-10 min-h-screen flex items-center justify-center px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <!-- Main Heading -->
+        <h1 class="text-5xl md:text-7xl lg:text-8xl leading-tight tracking-[-0.03em] gradient-text bg-gradient-to-r from-white via-blue-300 to-indigo-400 mb-6">
+          <span class="title-bold">The Future of Search</span>
+          <br>
+          <span class="text-4xl md:text-6xl lg:text-7xl title-bold">is Here</span>
+        </h1>
+        
+        <!-- Subtitle -->
+        <p class="text-lg md:text-xl text-white/70 max-w-3xl mx-auto mb-8 leading-relaxed">
+          Transform your business with ZapAI's cutting-edge AI platform. Discover, analyze, and extract insights from any data source with AI-powered search that understands context and delivers precise results instantly.
+        </p>
+        
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <button class="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-xl transition-all duration-200 pulse-glow">
+            Start Building Now
+          </button>
+          <button class="px-8 py-4 glass-effect bg-white/10 hover:bg-white/15 text-white font-medium rounded-xl transition-all duration-200 border border-white/10">
+            <i class="fas fa-play mr-2"></i>
+            Watch Demo
+          </button>
+        </div>
+        
+        <!-- Trust Indicators -->
+        <div class="flex flex-wrap justify-center gap-6 mb-16">
+          <span class="text-xs text-white/60 px-3 py-2 rounded-full bg-white/5 border border-white/10">
+            <i class="fas fa-shield-alt mr-2"></i>SOC 2 Certified
+          </span>
+          <span class="text-xs text-white/60 px-3 py-2 rounded-full bg-white/5 border border-white/10">
+            <i class="fas fa-lock mr-2"></i>GDPR Compliant
+          </span>
+          <span class="text-xs text-white/60 px-3 py-2 rounded-full bg-white/5 border border-white/10">
+            <i class="fas fa-chart-line mr-2"></i>99.9% Uptime
+          </span>
+        </div>
+      </div>
+      
+      <!-- Feature Cards -->
+      <div id="features" class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Feature 1 -->
+        <div class="glass-effect bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-2xl p-6 floating-animation">
+          <div class="feature-icon mb-4">
+            <i class="fas fa-spider text-blue-400"></i>
+          </div>
+          <h3 class="text-xl text-white mb-3">Intelligent Web Crawling</h3>
+          <p class="text-white/70 text-sm leading-relaxed">
+            Automatically discover and extract content from any website with AI-powered crawling that respects robots.txt and delivers structured, clean data.
+          </p>
+          <div class="mt-4 flex items-center text-blue-400 text-sm">
+            <span>Learn more</span>
+            <i class="fas fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="glass-effect bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-2xl p-6 floating-animation" style="animation-delay: -2s;">
+          <div class="feature-icon mb-4">
+            <i class="fas fa-bolt text-indigo-400"></i>
+          </div>
+          <h3 class="text-xl text-white mb-3">Real-time Search Intelligence</h3>
+          <p class="text-white/70 text-sm leading-relaxed">
+            Process search queries with lightning speed using advanced AI algorithms that understand context and deliver precise, ranked results instantly.
+          </p>
+          <div class="mt-4 flex items-center text-indigo-400 text-sm">
+            <span>Learn more</span>
+            <i class="fas fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="glass-effect bg-gradient-to-br from-white/10 to-white/5 border border-white/10 rounded-2xl p-6 floating-animation" style="animation-delay: -4s;">
+          <div class="feature-icon mb-4">
+            <i class="fas fa-plug text-purple-400"></i>
+          </div>
+          <h3 class="text-xl text-white mb-3">Enterprise Integration</h3>
+          <p class="text-white/70 text-sm leading-relaxed">
+            Seamlessly integrate with your existing systems through robust APIs, MCP servers, and comprehensive cost tracking for enterprise-grade deployments.
+          </p>
+          <div class="mt-4 flex items-center text-purple-400 text-sm">
+            <span>Learn more</span>
+            <i class="fas fa-arrow-right ml-2"></i>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Stats Section -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mt-16">
+        <div class="text-center">
+          <div class="text-3xl md:text-4xl font-[200] text-white mb-2">10M+</div>
+          <div class="text-sm text-white/60">API Calls Daily</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl md:text-4xl font-[200] text-white mb-2">50ms</div>
+          <div class="text-sm text-white/60">Average Latency</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl md:text-4xl font-[200] text-white mb-2">99.9%</div>
+          <div class="text-sm text-white/60">Uptime SLA</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl md:text-4xl font-[200] text-white mb-2">500+</div>
+          <div class="text-sm text-white/60">Enterprise Clients</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WebGL Shader Script -->
+  <script>
+    window.onload = function() {
+      const canvas = document.getElementById('shader-canvas');
+      const gl = canvas.getContext('webgl');
+      
+      if (!gl) {
+        console.error('WebGL not supported');
+        return;
+      }
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+      }
+      
+      resize();
+      window.addEventListener('resize', resize);
+
+      // Vertex Shader
+      const vertexShaderSource = `
+        attribute vec2 aPosition;
+        void main() {
+          gl_Position = vec4(aPosition, 0.0, 1.0);
+        }
+      `;
+
+      // Fragment Shader - Animated circular patterns
+      const fragmentShaderSource = `
+        precision highp float;
+        uniform float iTime;
+        uniform vec2 iResolution;
+        
+        mat2 rotate2d(float angle){
+          float c = cos(angle), s = sin(angle);
+          return mat2(c, -s, s, c);
+        }
+        
+        float variation(vec2 v1, vec2 v2, float strength, float speed) {
+          return sin(
+              dot(normalize(v1), normalize(v2)) * strength + iTime * speed
+          ) / 100.0;
+        }
+        
+        vec3 paintCircle (vec2 uv, vec2 center, float rad, float width) {
+          vec2 diff = center-uv;
+          float len = length(diff);
+          len += variation(diff, vec2(0.0, 1.0), 5.0, 2.0);
+          len -= variation(diff, vec2(1.0, 0.0), 5.0, 2.0);
+          float circle = smoothstep(rad-width, rad, len) - smoothstep(rad, rad+width, len);
+          return vec3(circle);
+        }
+        
+        void main() {
+          vec2 uv = gl_FragCoord.xy / iResolution.xy;
+          uv.x *= 1.5;
+          uv.x -= 0.25;
+          
+          vec3 color = vec3(0.0);
+          float radius = 0.35;
+          vec2 center = vec2(0.5);
+          
+          // Main circles
+          color += paintCircle(uv, center, radius, 0.035);
+          color += paintCircle(uv, center, radius - 0.018, 0.01);
+          color += paintCircle(uv, center, radius + 0.018, 0.005);
+          
+          // Rotation and color mixing
+          vec2 v = rotate2d(iTime) * uv;
+          color *= vec3(v.x, v.y, 0.7-v.y*v.x);
+          
+          // Additional glow
+          color += paintCircle(uv, center, radius, 0.003);
+          
+          gl_FragColor = vec4(color, 1.0);
+        }
+      `;
+
+      function compileShader(type, source) {
+        const shader = gl.createShader(type);
+        gl.shaderSource(shader, source);
+        gl.compileShader(shader);
+        
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+          console.error('Shader compilation error:', gl.getShaderInfoLog(shader));
+          gl.deleteShader(shader);
+          return null;
+        }
+        
+        return shader;
+      }
+
+      const vertexShader = compileShader(gl.VERTEX_SHADER, vertexShaderSource);
+      const fragmentShader = compileShader(gl.FRAGMENT_SHADER, fragmentShaderSource);
+      
+      if (!vertexShader || !fragmentShader) {
+        return;
+      }
+
+      // Create program
+      const program = gl.createProgram();
+      gl.attachShader(program, vertexShader);
+      gl.attachShader(program, fragmentShader);
+      gl.linkProgram(program);
+
+      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+        console.error('Program linking error:', gl.getProgramInfoLog(program));
+        return;
+      }
+
+      gl.useProgram(program);
+
+      // Create buffer
+      const buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
+        -1, -1,
+         1, -1,
+        -1,  1,
+        -1,  1,
+         1, -1,
+         1,  1,
+      ]), gl.STATIC_DRAW);
+
+      // Set up attributes
+      const aPosition = gl.getAttribLocation(program, 'aPosition');
+      gl.enableVertexAttribArray(aPosition);
+      gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
+
+      // Get uniform locations
+      const iTimeLoc = gl.getUniformLocation(program, 'iTime');
+      const iResLoc = gl.getUniformLocation(program, 'iResolution');
+
+      // Render loop
+      function render(time) {
+        gl.uniform1f(iTimeLoc, time * 0.001);
+        gl.uniform2f(iResLoc, canvas.width, canvas.height);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+        requestAnimationFrame(render);
+      }
+
+      requestAnimationFrame(render);
+    };
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html> 

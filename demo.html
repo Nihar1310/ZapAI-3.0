@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZapAI - AI-Powered Search Engine Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .demo-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .demo-card p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .demo-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.3s ease;
+        }
+        
+        .demo-link:hover {
+            background: #5a67d8;
+        }
+        
+        .status-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .status-item {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f7fafc;
+        }
+        
+        .status-healthy {
+            background: #c6f6d5;
+            color: #2d7d32;
+        }
+        
+        .status-degraded {
+            background: #fed7d7;
+            color: #c53030;
+        }
+        
+        .feature-list {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        
+        .feature-list h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .feature-list ul {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            color: #48bb78;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 ZapAI</h1>
+            <p>AI-Powered Search Engine - Now Running on localhost:8001</p>
+        </div>
+        
+        <div id="status-section" class="status-section">
+            <h3>🔍 Application Status</h3>
+            <div id="status-grid" class="status-grid">
+                <div class="status-item">
+                    <strong>Server Status</strong>
+                    <div id="server-status">Loading...</div>
+                </div>
+                <div class="status-item">
+                    <strong>Version</strong>
+                    <div id="version">Loading...</div>
+                </div>
+                <div class="status-item">
+                    <strong>Environment</strong>
+                    <div id="environment">Loading...</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h3>📚 API Documentation</h3>
+                <p>Explore the complete API documentation with interactive examples and endpoint testing.</p>
+                <a href="http://localhost:8001/api/v1/docs" target="_blank" class="demo-link">View API Docs</a>
+            </div>
+            
+            <div class="demo-card">
+                <h3>🏥 Health Check</h3>
+                <p>Monitor the application health and service status in real-time.</p>
+                <a href="http://localhost:8001/health" target="_blank" class="demo-link">Check Health</a>
+            </div>
+            
+            <div class="demo-card">
+                <h3>🔍 Search API</h3>
+                <p>Test the powerful search functionality with multi-engine aggregation.</p>
+                <a href="http://localhost:8001/api/v1/docs#/default/search_api_v1_search_post" target="_blank" class="demo-link">Test Search</a>
+            </div>
+            
+            <div class="demo-card">
+                <h3>📊 Service Status</h3>
+                <p>View detailed service status including MCP servers and cache services.</p>
+                <a href="http://localhost:8001/api/v1/status" target="_blank" class="demo-link">View Status</a>
+            </div>
+        </div>
+        
+        <div class="feature-list">
+            <h3>🎯 Key Features Implemented</h3>
+            <ul>
+                <li>Complete FastAPI application with async architecture</li>
+                <li>Multi-engine search orchestration (Google, Bing, DuckDuckGo)</li>
+                <li>AI-powered content processing with OpenAI integration</li>
+                <li>Redis caching for improved performance</li>
+                <li>Comprehensive cost tracking and monitoring</li>
+                <li>Rate limiting with sliding window algorithm</li>
+                <li>Database models for users, searches, and analytics</li>
+                <li>MCP (Model Context Protocol) server integration</li>
+                <li>Contact extraction from scraped content</li>
+                <li>Detailed error logging and performance metrics</li>
+                <li>Production-ready configuration management</li>
+                <li>Health checks and service monitoring</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>ZapAI v1.0.0 - AI-Powered Search Engine</p>
+            <p>🚀 Successfully running all core services</p>
+        </div>
+    </div>
+    
+    <script type="module">
+        // Import and initialize stagewise toolbar (development mode only)
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname === '') {
+            try {
+                // Try local import first
+                const { initToolbar } = await import('./node_modules/@stagewise/toolbar/dist/index.es.js');
+                initToolbar({
+                    plugins: [],
+                    position: 'bottom-right',
+                    theme: 'light',
+                    enabled: true,
+                });
+                console.log('Stagewise toolbar initialized successfully');
+            } catch (error) {
+                console.error('Stagewise toolbar failed to load:', error);
+                // Try alternative CDN import
+                try {
+                    const script = document.createElement('script');
+                    script.type = 'module';
+                    script.innerHTML = `
+                        import { initToolbar } from 'https://unpkg.com/@stagewise/toolbar@latest/dist/index.es.js';
+                        initToolbar({
+                            plugins: [],
+                            position: 'bottom-right',
+                            theme: 'light',
+                            enabled: true,
+                        });
+                        console.log('Stagewise toolbar loaded from CDN');
+                    `;
+                    document.head.appendChild(script);
+                } catch (cdnError) {
+                    console.error('CDN fallback also failed:', cdnError);
+                }
+            }
+        }
+        
+        // Fetch and display application status
+        async function updateStatus() {
+            try {
+                const response = await fetch('http://localhost:8001/health');
+                const data = await response.json();
+                
+                document.getElementById('server-status').textContent = data.status;
+                document.getElementById('server-status').parentElement.className = 
+                    `status-item ${data.status === 'healthy' ? 'status-healthy' : 'status-degraded'}`;
+                
+                document.getElementById('version').textContent = data.version;
+                document.getElementById('environment').textContent = data.environment;
+                
+            } catch (error) {
+                document.getElementById('server-status').textContent = 'Offline';
+                document.getElementById('server-status').parentElement.className = 'status-item status-degraded';
+                console.error('Error fetching status:', error);
+            }
+        }
+        
+        // Update status on page load
+        updateStatus();
+        
+        // Update status every 30 seconds
+        setInterval(updateStatus, 30000);
+    </script>
+</body>
+</html> 

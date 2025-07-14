@@ -1,0 +1,60 @@
+# FastAPI and Web Framework
+fastapi==0.111.1
+uvicorn[standard]==0.24.0
+pydantic==2.8.2
+pydantic-settings==2.3.0
+
+# Database
+sqlalchemy==2.0.23
+alembic==1.13.1
+psycopg2-binary==2.9.9
+aiosqlite==0.20.0
+redis==5.0.1
+asyncpg==0.29.0
+
+# LLM and AI services
+openai==1.3.7
+anthropic==0.7.8
+
+# Web Scraping
+playwright==1.40.0
+beautifulsoup4==4.12.2
+requests==2.31.0
+aiohttp==3.9.1
+firecrawl-py==2.15.0
+
+# Payment Processing
+stripe==7.12.0
+
+# Background Workers
+celery==5.3.4
+redis==5.0.1
+
+# Apollo.io Integration
+apolloapi==1.0.3
+
+# Utilities
+python-dotenv==1.0.0
+# Uploads and forms
+python-multipart==0.0.9
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+httpx==0.27.0
+
+# Monitoring and Logging
+loguru==0.7.2
+prometheus-client==0.19.0
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+
+# Development
+black==23.11.0
+isort==5.12.0
+flake8==6.1.0
+mypy==1.7.1
+sqlalchemy
+alembic
+psycopg2-binary

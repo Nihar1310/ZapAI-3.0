@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@hisma/server-puppeteer": "^0.6.5"
+  },
+  "devDependencies": {
+    "@stagewise/toolbar": "^0.5.2"
+  }
+}
